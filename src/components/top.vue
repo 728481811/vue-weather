@@ -5,24 +5,28 @@
 </template>
 
 <script type="text/ecmascript-6"> 
-import {getWeatherDate} from 'api/weatherDate'
+import {getWeatherDate} from 'api/weatherDate';
+import {getCity} from 'api/getCity'
 import axios from 'axios'
 export default {
     data() {
         return {
             wDate: {},
-            city: '广州'
+            city: '广东省广州市'
         }
     },
     created() {
-        this.weatherDate()
+        this.getPosition();
     },
     methods: {
-        weatherDate() {
-            getWeatherDate(this.city).then((res, rej) => {
-                this.wDate = res.data.result;
+        getPosition() {
+            getCity().then((res) => {
+                this.city = res.cname;
+                getWeatherDate(this.city).then((res, rej) => {
+                    this.wDate = res.data.result;
+                })
             })
-        }
+        },
     }
 }
 </script>

@@ -37,7 +37,10 @@ module.exports = {
     proxyTable: {
       '/weather': {
         target: 'http://localhost:3000/api'
-      }
+      },
+      '/getCity': {
+        target: 'http://localhost:3000/api'
+      },
     }
   },
 

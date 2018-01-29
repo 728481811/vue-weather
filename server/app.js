@@ -40,6 +40,14 @@ router.get('/weather', function(req, res) {
     console.log(e)
   })
 })
+router.get('/getCity', function(req, res) {
+  var url = 'http://pv.sohu.com/cityjson?ie=utf-8';
+  axios.get(url).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
 app.use('/api', router)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
