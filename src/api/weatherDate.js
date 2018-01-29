@@ -2,7 +2,7 @@ import axios from 'axios'
 export function getWeatherDate(location) {
     const url = '/weather';
     const data = {
-        city: location
+        ip: location
     };
     return axios.get(url, {
         params: data

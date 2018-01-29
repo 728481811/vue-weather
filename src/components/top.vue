@@ -1,6 +1,6 @@
 <template>
     <div class="top">
-        {{wDate}}
+        {{wData}}
     </div>
 </template>
 
@@ -11,19 +11,19 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            wDate: {},
-            city: '广东省广州市'
+            wData: {},
+            ip: ''
         }
     },
     created() {
-        this.getPosition();
+        this.getDetailData();
     },
     methods: {
-        getPosition() {
+        getDetailData() {
             getCity().then((res) => {
-                this.city = res.cname;
-                getWeatherDate(this.city).then((res, rej) => {
-                    this.wDate = res.data.result;
+                this.ip = res.cip;
+                getWeatherDate(this.ip).then((res) => {
+                    this.wData = res.data.result;
                 })
             })
         },
